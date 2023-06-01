@@ -5,22 +5,31 @@
 	<title>BUYSELL</title>
 </head>
 <body>
-<h1>BYSELL</h1><hr>
+<h1>BYSELL</h1>
+<hr>
 <h4>Товары со всей России</h4>
+<form action="/" method="get">
+	Поиск по названию объявления: <input type="text" name="title"><br>
+	<input type="submit" value="Поиск"/>
+</form>
 {{#products}}
-       <div>
-            <p><b>{{title}}</b> {{price}} руб. | <a href="/product/{{id}}">Подробнее...</a></p>
-       </div>
+	<div>
+		<p><b>{{title}}</b> {{price}} руб. | <a href="/product/{{id}}">Подробнее...</a></p>
+	</div>
+{{/products}}
+{{^products}}
+	<h3>Товаров нет</h3>
 {{/products}}
 <hr>
 <h3>Создать новый товар</h3>
-<form action="/product/created" method="post">
-    Название объявления : <input type="text" name="title"/><br><br>
-    Описание объявления : <input type="text" name="description"/><br><br>
-    Цена: <input type="number" name="price"/><br><br>
-    Город: <input type="text" name="city"/><br><br>
-    Имя: <input type="text" name="author"/><br><br>
-    <input type="submit" value="Добавить товар"/>
+<form action="/product/create" method="post">
+	Название объявления: <input type="text" name="title"/><br><br>
+	Описание объявления: <input type="text" name="description"/><br><br>
+	Цена: <input type="number" name="price"/><br><br>
+	Город: <input type="text" name="city"/><br><br>
+	Имя: <input type="text" name="author"/><br><br>
+	<input type="submit" value="Добавить товар"/>
 </form>
 </body>
 </html>
+
