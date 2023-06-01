@@ -5,8 +5,15 @@
 	<title>BUYSELL</title>
 </head>
 <body>
-<h1>BYSELL</h1><hr>
+<h1>BYSELL</h1>
+<hr>
 <h4>Подробная информация о товаре</h4>
+{{#images}}
+	<img src="/images/{{id}}" height="68px"/><br><br>
+{{/images}}
+{{^product.images}}
+	<p>Нет доступных изображений</p>
+{{/product.images}}
 <b>Название товара: </b>{{product.title}}<br>
 <b>Описание товара: </b>{{product.description}}<br>
 <b>Цена: </b>{{product.price}}<br>
@@ -18,3 +25,6 @@
 </form>
 </body>
 </html>
+
+
+
