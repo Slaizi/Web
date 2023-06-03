@@ -7,9 +7,7 @@ import ru.Bogachev.bysell.models.enums.Role;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
@@ -37,15 +35,15 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Product> products = new ArrayList<>();
     private LocalDateTime dateOfCreated;
-
     @PrePersist
     private void init() {
         dateOfCreated = LocalDateTime.now();
     }
 
     // security
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;

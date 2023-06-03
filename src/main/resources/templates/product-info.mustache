@@ -1,30 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
 	<title>BUYSELL</title>
 </head>
 <body>
-<h1>BYSELL</h1>
-<hr>
+<h1>BUYSELL</h1><hr>
 <h4>Подробная информация о товаре</h4>
 {{#images}}
-	<img src="/images/{{id}}" height="68px"/><br><br>
+	<img src="/images/{{id}}" height="60px"/><br><br>
 {{/images}}
-{{^product.images}}
-	<p>Нет доступных изображений</p>
-{{/product.images}}
 <b>Название товара: </b>{{product.title}}<br>
 <b>Описание товара: </b>{{product.description}}<br>
 <b>Цена: </b>{{product.price}}<br>
 <b>Город: </b>{{product.city}}<br>
-<b>Автор: </b>{{product.author}}<br>
-<hr>
-<form action="/product/delete/{{product.id}}" method="post">
-	<input type="submit" value="Удалить"/>
-</form>
+<b>Автор: </b>{{product.user.name}}<br>
+<b>Номер телефона: </b>{{product.user.phoneNumber}}<br>
 </body>
 </html>
+
 
 
 
